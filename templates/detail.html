@@ -11,6 +11,11 @@
 {% endblock %}
 
 {% block content %}
-  <p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }}</p>
+
+<p>Created {{ entry.timestamp.strftime('%m/%d/%Y at %G:%I%p') }} by {{ entry.author }}, relates to <a href="{{ entry.link }}"> {{ entry.link }} </a></p>
+
+</hr>
+
+
   {{ entry.html_content }}
 {% endblock %}

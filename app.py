@@ -56,7 +56,9 @@ oembed_providers = bootstrap_basic(OEmbedCache())
 
 
 class Entry(flask_db.Model):
+    author = CharField()
     title = CharField()
+    link = CharField()
     slug = CharField(unique=True)
     content = TextField()
     published = BooleanField(index=True)
@@ -197,6 +199,8 @@ def create():
         if request.form.get('title') and request.form.get('content'):
             entry = Entry.create(
                 title=request.form['title'],
+                link=request.form['link'],
+                author=request.form['author'],
                 content=request.form['content'],
                 published=request.form.get('published') or False)
             flash('Entry created successfully.', 'success')
