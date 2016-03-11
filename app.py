@@ -233,6 +233,8 @@ def edit(slug):
     entry = get_object_or_404(Entry, Entry.slug == slug)
     if request.method == 'POST':
         if request.form.get('title') and request.form.get('content'):
+            entry.author = request.form['author']
+            entry.link = request.form['link']
             entry.title = request.form['title']
             entry.content = request.form['content']
             entry.published = request.form.get('published') or False
